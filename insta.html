@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Images/Vidoes</title>
+    <link rel="stylesheet" href="insta.css">
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+</head>
+<body>
+    <header>Fuck Instagram</header>
+<script>
+var dir = "images";
+var fileextension = ".jpg";
+$.ajax({
+    //This will retrieve the contents of the folder if the folder is configured as 'browsable'
+    url: dir,
+    success: function (data) {
+        //List all .png file names in the page
+        $(data).find("a:contains(" + fileextension + ")").each(function () {
+            var filename = this.href.replace(window.location.host, "").replace("http://", "");
+            $("body").append("<img src='" + '' + filename + "'>");
+        });
+    }
+});
+</script>
+</body>
+</html>
